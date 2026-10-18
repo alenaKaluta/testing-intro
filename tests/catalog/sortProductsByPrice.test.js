@@ -8,7 +8,14 @@ describe('sortProductsByPrice', () => {
   test('все товары без направления сортируются как [3, 6, 5, 4, 2, 1]', () => {
     expect(sortProductsByPrice(products).map((product) => product.id)).toEqual([3, 6, 5, 4, 2, 1]);
   });
-  test.todo("товары [1, 3, 4] c 'asc' сортируются как [3, 4, 1]");
+  test("товары [1, 3, 4] c 'asc' сортируются как [3, 4, 1]", () => {
+    const catalog = [
+      { id: 1, price: 49900 },
+      { id: 3, price: 18900 },
+      { id: 4, price: 27900 },
+    ];
+    expect(sortProductsByPrice(catalog, 'asc').map((product) => product.id)).toEqual([3, 4, 1]);
+  });
   test.todo("все товары c 'desc' сортируются как [1, 2, 4, 5, 6, 3]");
   test.todo("товары [3, 1, 4] c 'desc' сортируются как [1, 4, 3]");
   test.todo("товары [5, 2, 6] c 'desc' сортируются как [2, 5, 6]");
