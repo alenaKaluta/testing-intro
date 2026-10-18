@@ -38,7 +38,18 @@ describe('searchProducts', () => {
     ];
     expect(searchProducts(catalog, query).map((product) => product.id)).toEqual([4]);
   });
-  test.todo("'javascript' возвращает товар с ID 3");
+  test("'javascript' возвращает товар с ID 3", () => {
+    const query = 'javascript';
+    const catalog = [
+      { id: 1, name: 'Наушники' },
+      { id: 2, name: 'Клавиатура' },
+      { id: 3, name: 'JavaScript для начинающих' },
+      { id: 4, name: 'Настольная лампа' },
+      { id: 5, name: 'Чехол для ноутбука' },
+      { id: 6, name: 'Чистый код' },
+    ];
+    expect(searchProducts(catalog, query).map((product) => product.id)).toEqual([3]);
+  });
   test.todo("'ЧЕХОЛ' возвращает товар с ID 5");
   test.todo("'наушники' возвращает товар с ID 1");
   test.todo("пустая строка возвращает товары с ID [1, 2, 3, 4, 5, 6]");
