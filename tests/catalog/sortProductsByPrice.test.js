@@ -19,7 +19,14 @@ describe('sortProductsByPrice', () => {
   test("все товары c 'desc' сортируются как [1, 2, 4, 5, 6, 3]", () => {
     expect(sortProductsByPrice(products, 'desc').map((product) => product.id)).toEqual([1, 2, 4, 5, 6, 3]);
   });
-  test.todo("товары [3, 1, 4] c 'desc' сортируются как [1, 4, 3]");
+  test("товары [3, 1, 4] c 'desc' сортируются как [1, 4, 3]", () => {
+    const catalog = [
+      { id: 3, price: 18900 },
+      { id: 1, price: 49900 },
+      { id: 4, price: 27900 },
+    ];
+    expect(sortProductsByPrice(catalog, 'desc').map((product) => product.id)).toEqual([1, 4, 3]);
+  });
   test.todo("товары [5, 2, 6] c 'desc' сортируются как [2, 5, 6]");
   test.todo("'asc' не меняет исходный массив [1, 3, 4]");
   test.todo("'desc' не меняет исходный массив [1, 3, 4]");
