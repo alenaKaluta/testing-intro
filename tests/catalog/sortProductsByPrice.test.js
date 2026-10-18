@@ -27,7 +27,14 @@ describe('sortProductsByPrice', () => {
     ];
     expect(sortProductsByPrice(catalog, 'desc').map((product) => product.id)).toEqual([1, 4, 3]);
   });
-  test.todo("товары [5, 2, 6] c 'desc' сортируются как [2, 5, 6]");
+  test("товары [5, 2, 6] c 'desc' сортируются как [2, 5, 6]", () => {
+    const catalog = [
+      { id: 5, price: 24900 },
+      { id: 2, price: 35900 },
+      { id: 6, price: 21900 },
+    ];
+    expect(sortProductsByPrice(catalog, 'desc').map((product) => product.id)).toEqual([2, 5, 6]);
+  });
   test.todo("'asc' не меняет исходный массив [1, 3, 4]");
   test.todo("'desc' не меняет исходный массив [1, 3, 4]");
   test.todo('направление по умолчанию не меняет исходный массив всех товаров');
