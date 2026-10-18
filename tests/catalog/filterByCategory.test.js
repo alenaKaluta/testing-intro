@@ -79,6 +79,16 @@ describe('filterByCategory', () => {
       { id: 6, category: 'books' },];
     expect(filterByCategory(catalog, category).map((product) => product.id)).toEqual([]);
   });
-  test.todo("'toys' возвращает пустой массив");
+  test("'toys' возвращает пустой массив", () => {
+    const category = 'toys';
+    const catalog = [
+      { id: 1, category: 'electronics' },
+      { id: 2, category: 'electronics' },
+      { id: 3, category: 'books' },
+      { id: 4, category: 'home' },
+      { id: 5, category: 'home' },
+      { id: 6, category: 'books' },];
+    expect(filterByCategory(catalog, category).map((product) => product.id)).toEqual([]);
+  });
   test.todo("'sports' возвращает пустой массив");
 });
