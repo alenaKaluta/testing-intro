@@ -2,13 +2,103 @@ const products = require('../../src/data/products');
 const { filterByCategory } = require('../../src/catalog');
 
 describe('filterByCategory', () => {
-  test.todo("'all' возвращает товары с ID [1, 2, 3, 4, 5, 6]");
-  test.todo("undefined возвращает товары с ID [1, 2, 3, 4, 5, 6]");
-  test.todo("пустая строка возвращает товары с ID [1, 2, 3, 4, 5, 6]");
-  test.todo("'electronics' возвращает товары с ID [1, 2]");
-  test.todo("'books' возвращает товары с ID [3, 6]");
-  test.todo("'home' возвращает товары с ID [4, 5]");
-  test.todo("'clothes' возвращает пустой массив");
-  test.todo("'toys' возвращает пустой массив");
-  test.todo("'sports' возвращает пустой массив");
+  test("'all' возвращает товары с ID [1, 2, 3, 4, 5, 6]", () => {
+    const category = 'all';
+    const catalog = [
+      { id: 1, category: 'electronics' },
+      { id: 2, category: 'electronics' },
+      { id: 3, category: 'books' },
+      { id: 4, category: 'home' },
+      { id: 5,  category: 'home' },
+      { id: 6, category: 'books' },];
+    expect(filterByCategory(catalog, category).map((product) => product.id)).toEqual([1, 2, 3, 4, 5, 6]);
+  });
+  test("undefined возвращает товары с ID [1, 2, 3, 4, 5, 6]", () => {
+    const category = undefined;
+    const catalog = [
+      { id: 1, category: 'electronics' },
+      { id: 2, category: 'electronics' },
+      { id: 3, category: 'books' },
+      { id: 4, category: 'home' },
+      { id: 5,  category: 'home' },
+      { id: 6, category: 'books' },];
+    expect(filterByCategory(catalog, category).map((product) => product.id)).toEqual([1, 2, 3, 4, 5, 6]);
+  });
+  test("пустая строка возвращает товары с ID [1, 2, 3, 4, 5, 6]", () => {
+    const category = '';
+    const catalog = [
+      { id: 1, category: 'electronics' },
+      { id: 2, category: 'electronics' },
+      { id: 3, category: 'books' },
+      { id: 4, category: 'home' },
+      { id: 5,  category: 'home' },
+      { id: 6, category: 'books' },];
+    expect(filterByCategory(catalog, category).map((product) => product.id)).toEqual([1, 2, 3, 4, 5, 6]);
+  });
+  test("'electronics' возвращает товары с ID [1, 2]", () => {
+    const category = 'electronics';
+    const catalog = [
+      { id: 1, category: 'electronics' },
+      { id: 2, category: 'electronics' },
+      { id: 3, category: 'books' },
+      { id: 4, category: 'home' },
+      { id: 5, category: 'home' },
+      { id: 6, category: 'books' },];
+    expect(filterByCategory(catalog, category).map((product) => product.id)).toEqual([1, 2]);
+  });
+  test("'books' возвращает товары с ID [3, 6]", () => {
+    const category = 'books';
+    const catalog = [
+      { id: 1, category: 'electronics' },
+      { id: 2, category: 'electronics' },
+      { id: 3, category: 'books' },
+      { id: 4, category: 'home' },
+      { id: 5, category: 'home' },
+      { id: 6, category: 'books' },];
+    expect(filterByCategory(catalog, category).map((product) => product.id)).toEqual([3, 6]);
+  });
+  test("'home' возвращает товары с ID [4, 5]", () => {
+    const category = 'home';
+    const catalog = [
+      { id: 1, category: 'electronics' },
+      { id: 2, category: 'electronics' },
+      { id: 3, category: 'books' },
+      { id: 4, category: 'home' },
+      { id: 5, category: 'home' },
+      { id: 6, category: 'books' },];
+    expect(filterByCategory(catalog, category).map((product) => product.id)).toEqual([4, 5]);
+  });
+  test("'clothes' возвращает пустой массив", () => {
+    const category = 'clothes';
+    const catalog = [
+      { id: 1, category: 'electronics' },
+      { id: 2, category: 'electronics' },
+      { id: 3, category: 'books' },
+      { id: 4, category: 'home' },
+      { id: 5, category: 'home' },
+      { id: 6, category: 'books' },];
+    expect(filterByCategory(catalog, category).map((product) => product.id)).toEqual([]);
+  });
+  test("'toys' возвращает пустой массив", () => {
+    const category = 'toys';
+    const catalog = [
+      { id: 1, category: 'electronics' },
+      { id: 2, category: 'electronics' },
+      { id: 3, category: 'books' },
+      { id: 4, category: 'home' },
+      { id: 5, category: 'home' },
+      { id: 6, category: 'books' },];
+    expect(filterByCategory(catalog, category).map((product) => product.id)).toEqual([]);
+  });
+  test("'sports' возвращает пустой массив", () => {
+    const category = 'sports';
+    const catalog = [
+      { id: 1, category: 'electronics' },
+      { id: 2, category: 'electronics' },
+      { id: 3, category: 'books' },
+      { id: 4, category: 'home' },
+      { id: 5, category: 'home' },
+      { id: 6, category: 'books' },];
+    expect(filterByCategory(catalog, category).map((product) => product.id)).toEqual([]);
+  });
 });
