@@ -32,7 +32,16 @@ function changeQuantity(cart, id, quantityNew) {
   return cart.map((item) =>
       item.id === id ? { ...item, quantity: quantityNew} : item);
  }
-function removeFromCart() { return notImplemented(); }
+function removeFromCart(cart, id) { 
+  const productExisting = cart.find((item) => item.id === id);
+  if (!productExisting) {
+    return [...cart];
+  }
+  if (cart.length === 1 && productExisting) {
+    return [];
+  }
+  return cart.filter((product) => product.id !== id);
+ }
 function calculateCartSubtotal() { return notImplemented(); }
 function calculateOrderTotal() { return notImplemented(); }
 
