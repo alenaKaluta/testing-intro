@@ -44,6 +44,14 @@ describe('sortProductsByPrice', () => {
     sortProductsByPrice(catalog, 'asc');
     expect(catalog.map((product) => product.id)).toEqual([1, 3, 4]);
   });
-  test.todo("'desc' не меняет исходный массив [1, 3, 4]");
+  test("'desc' не меняет исходный массив [1, 3, 4]", () => {
+    const catalog = [
+      { id: 1, price: 49900 },
+      { id: 3, price: 18900 },
+      { id: 4, price: 27900 },
+    ];
+    sortProductsByPrice(catalog, 'desc');
+    expect(catalog.map((product) => product.id)).toEqual([1, 3, 4]);
+  });
   test.todo('направление по умолчанию не меняет исходный массив всех товаров');
 });
