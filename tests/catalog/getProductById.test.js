@@ -10,7 +10,10 @@ describe('getProductById', () => {
     const id = 4;
     expect(getProductById(products, id)).toEqual(products[3]);
   });
-  test.todo('ID 6 возвращает products[5]');
+  test('ID 6 возвращает products[5]', () => {
+    const id = 6;
+    expect(getProductById(products, id)).toEqual(products[5]);
+  });
   test.todo('ID 0 возвращает null');
   test.todo('ID 999 возвращает null');
   test.todo('ID -1 возвращает null');
