@@ -34,5 +34,8 @@ describe('getProductById', () => {
     const id = undefined;
     expect(getProductById(products, id)).toBeNull();
   });
-  test.todo('ID NaN возвращает null');
+  test('ID NaN возвращает null', () => {
+    const id = NaN;
+    expect(getProductById(products, id)).toBeNull();
+  });
 });
