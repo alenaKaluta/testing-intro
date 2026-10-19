@@ -53,5 +53,8 @@ describe('sortProductsByPrice', () => {
     sortProductsByPrice(catalog, 'desc');
     expect(catalog.map((product) => product.id)).toEqual([1, 3, 4]);
   });
-  test.todo('направление по умолчанию не меняет исходный массив всех товаров');
+  test('направление по умолчанию не меняет исходный массив всех товаров', () => {
+    sortProductsByPrice(products);
+    expect(products.map((product) => product.id)).toEqual([1, 2, 3, 4, 5, 6]);
+  });
 });
