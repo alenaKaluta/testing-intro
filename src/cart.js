@@ -45,7 +45,24 @@ function removeFromCart(cart, id) {
 function calculateCartSubtotal(cart) {
   return cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
  }
-function calculateOrderTotal() { return notImplemented(); }
+function calculateOrderTotal(cart, promoInput) {
+  const total = {
+      subtotal: 0,
+      discount: 0,
+      delivery: 0,
+      total: 0,
+    };
+  if (cart.length) {
+    total.subtotal = calculateCartSubtotal(cart);
+    total.delivery = total.subtotal >= 50000 ? 0 : 30000;
+    const promoNormalized = promoInput.trim().toLowerCase();
+    if (total.subtotal >= 20000 && promoNormalized === 'save10') {
+      total.discount = 0.1 * total.subtotal;
+    }
+    total.total = total.subtotal + total.delivery - total.discount;
+  } 
+  return total;
+}
 
 const cartApi = { addToCart, changeQuantity, removeFromCart, calculateCartSubtotal, calculateOrderTotal };
 
